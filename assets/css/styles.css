@@ -1,0 +1,314 @@
+/************************************************************************/
+/* BASE TEMPLATE STYLES
+/************************************************************************/
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: white;
+  -webkit-text-size-adjust: 100%;
+  font-size: 10px;
+}
+
+body {
+  background: white;
+  color: #141414;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+}
+
+section {
+  padding: 1.5rem 0;
+  position: relative;
+}
+
+.section_title {
+  padding: 1.5rem 0;
+}
+.section_title h1, .section_title h2, .section_title h3, .section_title h4, .section_title h5, .section_title h6 {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 2rem;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+
+.wrap {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
+}
+.wrap:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+@media (min-width: 1200px) {
+  .wrap {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .wrap:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+}
+
+/************************************************************************/
+/* TYPOGRAPHY
+/************************************************************************/
+a {
+  color: #00b4bc;
+  text-decoration: none;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+a:visited {
+  color: #00b4bc;
+}
+a:hover {
+  text-decoration: none;
+  color: #00b5bd;
+}
+a:hover, a:active, a:focus {
+  outline: 0;
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+/************************************************************************/
+/* HEADINGS
+/************************************************************************/
+h1, h2, h3, h4, h5, h6 {
+  color: #141414;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  text-rendering: optimizelegibility;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+h3 {
+  font-size: 2.0rem;
+}
+
+h4 {
+  font-size: 1.8rem;
+}
+
+h5 {
+  font-size: 1.6rem;
+}
+
+h6 {
+  font-size: 1.4rem;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?x8w5x2");
+  src: url("../fonts/icomoon.eot?x8w5x2#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?x8w5x2") format("truetype"), url("../fonts/icomoon.woff?x8w5x2") format("woff"), url("../fonts/icomoon.svg?x8w5x2#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-close:before {
+  content: "\e902";
+}
+
+.icon-camera:before {
+  content: "\e90f";
+}
+
+.icon-music:before {
+  content: "\e911";
+}
+
+.icon-play:before {
+  content: "\e912";
+}
+
+.icon-file-text:before {
+  content: "\e922";
+}
+
+.icon-linkedin:before {
+  content: "\eac9";
+}
+
+/************************************************************************/
+/* PROJECT SAMPLE STYLES
+/************************************************************************/
+@media (min-width: 570px) {
+  .wrap {
+    position: relative;
+  }
+}
+
+section {
+  background: white;
+}
+
+#tabs h1, #tabs h2, #tabs h3, #tabs h4, #tabs h5, #tabs h6, #tabs p {
+  color: white;
+}
+#tabs h3 {
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+#tabs .icon {
+  margin-bottom: 2rem;
+}
+#tabs .icon [class^="icon-"], #tabs .icon [class*=" icon-"] {
+  color: #999999;
+  font-size: 5.8rem;
+}
+#tabs .block {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 3rem;
+  position: relative;
+}
+#tabs .overlay {
+  background: #333333;
+  height: 100%;
+  padding: 5rem;
+  width: 100%;
+  z-index: 100;
+}
+@media (min-width: 570px) {
+  #tabs .overlay .row {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  }
+}
+@media (min-width: 570px) {
+  #tabs .overlay .row .icon {
+    padding-right: 3rem;
+  }
+}
+#tabs a.close {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 2rem 3rem;
+  z-index: 200;
+}
+@media (min-width: 570px) {
+  #tabs a.close {
+    position: absolute;
+  }
+}
+#tabs a.close [class^="icon-"], #tabs a.close [class*=" icon-"] {
+  color: white;
+  font-size: 2rem;
+}
+#tabs ul.ui-tabs-nav {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+#tabs ul.ui-tabs-nav li {
+  background: #333333;
+  padding-bottom: 5.25rem;
+  margin-bottom: 0.45rem;
+  width: 100%;
+}
+@media (min-width: 570px) {
+  #tabs ul.ui-tabs-nav li {
+    width: 49.75%;
+  }
+}
+@media (min-width: 820px) {
+  #tabs ul.ui-tabs-nav li {
+    width: 24.75%;
+  }
+}
+#tabs ul.ui-tabs-nav li.ui-state-active, #tabs ul.ui-tabs-nav li.ui-state-hover {
+  background: #999999;
+}
+#tabs ul.ui-tabs-nav li.ui-state-active [class^="icon-"],
+#tabs ul.ui-tabs-nav li.ui-state-active [class*=" icon-"],
+#tabs ul.ui-tabs-nav li.ui-state-active h3, #tabs ul.ui-tabs-nav li.ui-state-active p, #tabs ul.ui-tabs-nav li.ui-state-hover [class^="icon-"],
+#tabs ul.ui-tabs-nav li.ui-state-hover [class*=" icon-"],
+#tabs ul.ui-tabs-nav li.ui-state-hover h3, #tabs ul.ui-tabs-nav li.ui-state-hover p {
+  color: #333333;
+}
+#tabs .ui-tabs-panel.content {
+  display: none;
+  height: 100%;
+  padding: 0 1.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+@media (min-width: 570px) {
+  #tabs .ui-tabs-panel.content {
+    position: absolute;
+  }
+}
+#tabs .ui-tabs-panel.content h1, #tabs .ui-tabs-panel.content h2, #tabs .ui-tabs-panel.content h3, #tabs .ui-tabs-panel.content h4, #tabs .ui-tabs-panel.content h5, #tabs .ui-tabs-panel.content h6, #tabs .ui-tabs-panel.content p {
+  color: white;
+}

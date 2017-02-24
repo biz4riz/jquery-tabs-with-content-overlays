@@ -1,0 +1,110 @@
+/************************************************************************/
+/* PROJECT SAMPLE STYLES
+/************************************************************************/
+
+.wrap { 
+	@include breakpoint($md) { position: relative; }
+}
+
+section {
+	background: $white;
+}
+
+#tabs {
+
+	#{headings()}, p { color: $white; }
+	
+	h3 { 
+		margin-bottom: 1.5rem;
+		text-transform: uppercase;
+	}
+	
+	.icon { 
+		margin-bottom: 2rem; 
+		
+		[class^="icon-"], [class*=" icon-"] {
+			color: $grey;
+			font-size: 5.8rem;
+		}
+	}
+	
+	.block { 
+		display: inline-block;
+		margin-bottom: 1.5rem;
+		padding: 3rem;
+		position: relative; 
+	}
+	
+	.overlay {
+		background: $darkgrey;
+	    height: 100%;
+	    padding: 5rem;
+	    width: 100%;
+	    z-index: 100;
+	
+	    .row {
+		    @include breakpoint($md) {
+			    @include flexbox();
+		    }
+		    
+		    .icon { 
+				@include breakpoint($md) { padding-right: 3rem; }
+			}
+	    }
+	    
+	}
+	
+	a.close { 
+		display: none; 
+	    position: fixed;
+	    top: 0;
+	    right: 0;
+	    padding: 2rem 3rem;
+	    z-index: 200;
+	    
+	    @include breakpoint($md) { position: absolute; }
+	    
+	    [class^="icon-"], [class*=" icon-"] {
+			color: $white;
+			font-size: 2rem;
+		}
+	}
+	
+	ul.ui-tabs-nav {
+		@include flexbox();
+		@include flex-wrap(wrap);
+		@include flex-justify-content(space-between);
+		
+		li { 
+			background: $darkgrey; 
+			padding-bottom: 5.25rem;
+			margin-bottom: 0.45rem;
+			width: 100%;
+			
+			@include breakpoint($md) { width: 49.75%; }
+			@include breakpoint($lg) { width: 24.75%; }
+			
+			&.ui-state-active, 
+			&.ui-state-hover { 
+				background: $grey;
+				[class^="icon-"], 
+				[class*=" icon-"], 
+				h3, p { color: $darkgrey; }
+			}
+		} 
+	}
+	.ui-tabs-panel.content {
+	    display: none;
+	    height: 100%;
+	    padding: 0 1.5rem;
+	    position: fixed;
+	    top: 0; left: 0;
+	    width: 100%;
+	    z-index: -1;
+	    
+	    @include breakpoint($md) { position: absolute; }
+	    
+	    #{headings()}, p { color: $white; }
+	}	
+}
+
