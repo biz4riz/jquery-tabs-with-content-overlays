@@ -4,7 +4,6 @@
 
 function overlay() {
 	$('.overlay a.close').click(function(){
-		//alert('everything is hidden except for that which is seen');
 		$('.overlay').hide();
 	});
 }
@@ -21,7 +20,6 @@ function tabs() {
 	tabs.click(function(){
 		$('#tabs .close').show();
 		$('#tabs .ui-tabs-panel').css('z-index', 1);
-		//alert(contentHeight);
 	}) 	
 	$('#tabs a.close').click(function(){
 		$(this).hide();

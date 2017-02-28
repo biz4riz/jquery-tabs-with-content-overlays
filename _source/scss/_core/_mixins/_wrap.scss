@@ -4,7 +4,7 @@
 	@include container();
 	
 	@if $GRID_TYPE == 'static'{
-		padding: $grid_padding;
+		//padding: $grid_padding;
 	}
 	
 	@include susy-breakpoint($xl,$susy2){

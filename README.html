@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+<h1 id="jquerytabswithcontentoverlays">jQuery Tabs with Content Overlays</h1>
+
+<p>Content overlays using jQuery Tabs UI. View the <a href="https://jqueryui.com/tabs/" target="_blank">jQuery Tabs Documentation</a> for a basic understanding of jQuery Tabs.</p>
+
+<p><a href="http://biz4riz.com/development/github-projects/jquery-tabs-with-content-overlays/">View Demo</a></p>
+
+<h3>Styles</h3>
+
+<pre><code class="html">// The tabs container needs to have position: relative on tablet and above in order to contain the overlay content.
+@media (min-width: 570px) {
+  .wrap {
+    position: relative;
+  }
+}
+
+// Section needs a bg color for the overlay z-index to work properly.
+section { background: white; }
+
+#tabs h1, #tabs h2, #tabs h3, #tabs h4, #tabs h5, #tabs h6, #tabs p {
+  color: white;
+}
+#tabs h3 {
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+#tabs .icon {
+  margin-bottom: 2rem;
+}
+#tabs .icon [class^=&quot;icon-&quot;], #tabs .icon [class*=&quot; icon-&quot;] {
+  color: #999999;
+  font-size: 5.8rem;
+}
+#tabs .block {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 3rem;
+  position: relative;
+}
+#tabs .overlay {
+  background: #333333;
+  height: 100%;
+  padding: 5rem;
+  width: 100%;
+  z-index: 100;
+}
+@media (min-width: 570px) {
+  #tabs .overlay .row {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  }
+}
+@media (min-width: 570px) {
+  #tabs .overlay .row .icon {
+    padding-right: 3rem;
+  }
+}
+
+// Close is positioned fixed on mobile
+#tabs a.close {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 2rem 3rem;
+  z-index: 200;
+}
+@media (min-width: 570px) {
+  #tabs a.close {
+    position: absolute;
+  }
+}
+#tabs a.close [class^=&quot;icon-&quot;], #tabs a.close [class*=&quot; icon-&quot;] {
+  color: white;
+  font-size: 2rem;
+}
+#tabs ul.ui-tabs-nav {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+#tabs ul.ui-tabs-nav li {
+  background: #333333;
+  padding-bottom: 5.25rem;
+  margin-bottom: 0.45rem;
+  width: 100%;
+}
+@media (min-width: 570px) {
+  #tabs ul.ui-tabs-nav li {
+    width: 49.75%;
+  }
+}
+@media (min-width: 820px) {
+  #tabs ul.ui-tabs-nav li {
+    width: 24.75%;
+  }
+}
+#tabs ul.ui-tabs-nav li.ui-state-active, #tabs ul.ui-tabs-nav li.ui-state-hover {
+  background: #999999;
+}
+#tabs ul.ui-tabs-nav li.ui-state-active [class^=&quot;icon-&quot;],
+#tabs ul.ui-tabs-nav li.ui-state-active [class*=&quot; icon-&quot;],
+#tabs ul.ui-tabs-nav li.ui-state-active h3, #tabs ul.ui-tabs-nav li.ui-state-active p, #tabs ul.ui-tabs-nav li.ui-state-hover [class^=&quot;icon-&quot;],
+#tabs ul.ui-tabs-nav li.ui-state-hover [class*=&quot; icon-&quot;],
+#tabs ul.ui-tabs-nav li.ui-state-hover h3, #tabs ul.ui-tabs-nav li.ui-state-hover p {
+  color: #333333;
+}
+#tabs .ui-tabs-panel.content {
+  display: none;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+@media (min-width: 570px) {
+  #tabs .ui-tabs-panel.content {
+    position: absolute;
+  }
+}
+#tabs .ui-tabs-panel.content h1, #tabs .ui-tabs-panel.content h2, #tabs .ui-tabs-panel.content h3, #tabs .ui-tabs-panel.content h4, #tabs .ui-tabs-panel.content h5, #tabs .ui-tabs-panel.content h6, #tabs .ui-tabs-panel.content p {
+  color: white;
+}
+
+</code></pre>
+
+<h3>Scripts</h3>
+
+<pre><code class="html">
+function overlay() {
+    $('.overlay a.close').click(function(){
+        $('.overlay').hide();
+    });
+}
+function tabs() {
+    var tabs = $('#tabs li');
+    var content = $('.ui-tabs-panel.content .row');
+    var contentHeight = content.innerHeight();
+    
+    $('#tabs').tabs();
+    
+    tabs.removeClass('ui-tabs-active');
+    tabs.removeClass('ui-state-active');
+    
+    tabs.click(function(){
+        $('#tabs .close').show();
+        $('#tabs .ui-tabs-panel').css('z-index', 1);
+    })  
+    $('#tabs a.close').click(function(){
+        $(this).hide();
+        $('#tabs .ui-tabs-panel').css('z-index', -1);
+    }) 
+}
+
+$(document).ready(function() {
+    overlay();
+    tabs();
+});
+
+</code></pre>
+
+<h3>HTML</h3>
+
+<pre><code class="html">&lt;div id=&quot;tabs&quot;&gt;     
+    &lt;a href=&quot;javascript:void(0);&quot; class=&quot;close&quot;&gt;&lt;span class=&quot;icon-close&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+    
+    &lt;!-- Tab Navigation Items --&gt;
+    &lt;ul class=&quot;row&quot;&gt;
+        &lt;li class=&quot;block&quot;&gt;
+            &lt;a href=&quot;#tabs-1&quot;&gt;
+                &lt;div class=&quot;icon&quot;&gt;&lt;span class=&quot;icon-camera&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+                &lt;h3&gt;Ullamcorper Venenatis&lt;/h3&gt;
+                &lt;p&gt;Vestibulum id ligula porta felis euismod semper.&lt;/p&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;block&quot;&gt;
+            &lt;a href=&quot;#tabs-2&quot;&gt;
+                &lt;div class=&quot;icon&quot;&gt;&lt;span class=&quot;icon-music&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+                &lt;h3&gt;Vehicula Tellus&lt;/h3&gt;
+                &lt;p&gt;Integer posuere erat a ante venenatis dapibus posuere velit aliquet.&lt;/p&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;block&quot;&gt;
+            &lt;a href=&quot;#tabs-3&quot;&gt;
+                &lt;div class=&quot;icon&quot;&gt;&lt;span class=&quot;icon-play&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+                &lt;h3&gt;Egestas Porta&lt;/h3&gt;
+                &lt;p&gt;Donec ullamcorper nulla non metus auctor fringilla.&lt;/p&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;block&quot;&gt;
+            &lt;a href=&quot;#tabs-4&quot;&gt;
+                &lt;div class=&quot;icon&quot;&gt;&lt;span class=&quot;icon-file-text&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+                &lt;h3&gt;Ridiculus Sollicitudin&lt;/h3&gt;
+                &lt;p&gt;Vestibulum id ligula porta felis euismod semper.&lt;/p&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;!-- Tab Content Overlays --&gt;           
+    &lt;div id=&quot;tabs-1&quot; class=&quot;content&quot;&gt;
+        &lt;div class=&quot;overlay&quot;&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;icon&quot;&gt;&lt;span class=&quot;icon-camera&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h4&gt;Tab 1 Content&lt;/h4&gt;
+                    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&quot;tabs-2&quot; class=&quot;content&quot;&gt;
+        &lt;div class=&quot;overlay&quot;&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;icon&quot;&gt;&lt;span class=&quot;icon-music&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h4&gt;Tab 2 Content&lt;/h4&gt;
+                    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&quot;tabs-3&quot; class=&quot;content&quot;&gt;
+        &lt;div class=&quot;overlay&quot;&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;icon&quot;&gt;&lt;span class=&quot;icon-play&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h4&gt;Tab 3 Content&lt;/h4&gt;
+                    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&quot;tabs-4&quot; class=&quot;content&quot;&gt;
+        &lt;div class=&quot;overlay&quot;&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;icon&quot;&gt;&lt;span class=&quot;icon-file-text&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h4&gt;Tab 4 Content&lt;/h4&gt;
+                    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+</code></pre>
+
+</body>
+</html>
